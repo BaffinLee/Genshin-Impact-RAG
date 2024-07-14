@@ -17,7 +17,7 @@ export async function getCharacters(): Promise<string[]> {
 
     const list = await page.evaluate(() => {
         const items = document.querySelectorAll('#CardSelectTr .divsort .L');
-        return Array.from(items).map((item) => item.textContent!).filter(item => !!item);
+        return Array.from(items).map((item) => item.nextElementSibling?.textContent || item.textContent!).filter(item => !!item);
     });
 
     fs.writeFileSync(file, JSON.stringify(list), 'utf-8');
