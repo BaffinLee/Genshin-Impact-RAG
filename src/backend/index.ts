@@ -11,14 +11,19 @@ app.use(cors({
   origin: '*',
 }));
 
-app.get('/chat', async (ctx) => {
+app.post('/chat', async (ctx) => {
   const req = await ctx.req.json();
-  const contexts = getContexts(req.question);
+  const contexts = req.useContext
+    ? await getContexts(req.question)
+    : undefined;
   const res = await axios.post('http://localhost:8787/chat', {
     question: req.question,
     contexts,
   });
-  return Response.json(res.data);
+  return Response.json({
+    response: res.data.response,
+    contexts,
+  });
 });
 
 serve({

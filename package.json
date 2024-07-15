@@ -8,6 +8,7 @@
     "start:fe": "cd src/frontend && vite",
     "scrape": "ts-node src/crawler/index.ts",
     "embeding": "ts-node src/embeding/index.ts",
+    "chroma": "docker run -p 8000:8000 chromadb/chroma",
     "cf-login": "cd src/worker && wrangler login",
     "cf-worker": "cd src/worker && wrangler dev"
   },
@@ -21,6 +22,7 @@
     "chromadb": "^1.8.1",
     "chromadb-default-embed": "^2.13.2",
     "hono": "^4.4.13",
+    "less": "^4.2.0",
     "puppeteer": "^22.13.0",
     "ts-node": "^10.9.2",
     "turndown": "^7.2.0",

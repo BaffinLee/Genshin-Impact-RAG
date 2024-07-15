@@ -19,25 +19,25 @@ async function embedCharacter(character: string, collection: Collection) {
         return;
     }
 
+    const characterDataFile = path.resolve(__dirname, `../wiki-data/character/${character.replace(/\//g, '-')}.md`);
+    const characterData = await promisify(readFile)(characterDataFile, 'utf-8');
+    const index = characterData.indexOf('命之座\n---');
+    const text = characterData.slice(0, Math.min(512, index === -1 ? 512 : index));
+
     const file = path.resolve(__dirname, `../wiki-data/embeding/${character.replace(/\//g, '-')}.json`);
     if (await promisify(exists)(file)) {
         await collection.add({
             ids: [character],
+            documents: [text],
             embeddings: [JSON.parse(await promisify(readFile)(file, 'utf-8'))],
         });
         return;
     }
 
-    const characterDataFile = path.resolve(__dirname, `../wiki-data/character/${character.replace(/\//g, '-')}.md`);
-    const characterData = await promisify(readFile)(characterDataFile, 'utf-8');
-    const index = characterData.indexOf('命之座\n---');
-    const text = characterData.slice(0, Math.min(512, index === -1 ? 512 : index));
     const embeddings = await embedText([text]);
-
     await collection.add({
         ids: [character],
         embeddings,
     });
-
     await promisify(writeFile)(file, JSON.stringify(embeddings[0]), 'utf-8');
 }

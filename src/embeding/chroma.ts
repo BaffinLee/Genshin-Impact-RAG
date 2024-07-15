@@ -25,7 +25,6 @@ export async function embedText(texts: string[]): Promise<number[][]> {
         const res = await axios.post('http://localhost:8787/embeding', {
             text: texts,
         });
-        console.log(res.data.data.length);
         return res.data.data;
     } catch (err) {
         console.error('Please check your cloudflare worker server status, request failed!');
@@ -37,7 +36,7 @@ export async function getContexts(question: string) {
     const embeddings = await embedText([question]);
     const collection = await getCollection();
     const res = await collection.query({
-        queryEmbeddings: embeddings,
+        queryEmbeddings: embeddings[0],
         nResults: 2,
     });
     return res.documents[0];

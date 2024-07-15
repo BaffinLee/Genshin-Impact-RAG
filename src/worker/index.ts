@@ -28,11 +28,12 @@ async function handleChat(request: Request, env: Env) {
 		throw new Error('Need question');
 	}
 
-	const systemPrompt = `When answering the question or responding, use the context provided, if it is provided and relevant.`
+	const systemPrompt = `When answering the question or responding, use the context provided, only if it is provided and relevant. Context: ${
+		contexts?.join('\n') || ''
+	}`;
 
-	const res = await env.AI.run('@cf/meta/llama-3-8b-instruct', {
+	const res = await env.AI.run('@cf/qwen/qwen1.5-14b-chat-awq', {
 		messages: [
-			...(contexts?.length ? [{ role: 'system', content: contexts.join('\n') }] : []),
 			{ role: 'system', content: systemPrompt },
 			{ role: 'user', content: question },
 		],
