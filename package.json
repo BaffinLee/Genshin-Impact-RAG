@@ -4,15 +4,21 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "scrape": "ts-node src/crawler/index.ts"
+    "scrape": "ts-node src/crawler/index.ts",
+    "embeding": "ts-node src/embeding/index.ts",
+    "cf-login": "cd src/worker && wrangler login",
+    "cf-worker": "cd src/worker && wrangler dev"
   },
   "dependencies": {
+    "@cloudflare/workers-types": "^4.20240712.0",
     "@types/node": "^20.14.10",
     "@types/turndown": "^5.0.4",
+    "axios": "^1.7.2",
     "puppeteer": "^22.13.0",
     "ts-node": "^10.9.2",
     "turndown": "^7.2.0",
     "turndown-plugin-gfm": "^1.0.2",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.3",
+    "wrangler": "^3.64.0"
   }
 }
