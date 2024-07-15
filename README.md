@@ -34,11 +34,11 @@ yarn scrape
 
 ### Embeding
 
-Embed character's data into [chroma](https://trychroma.com/) verctor DB.
+Embed character's data into [chroma](https://trychroma.com/) vector DB.
 
 ```bash
 # start chroma db servives with docker
-docker pull chromadb/chroma 
+docker pull chromadb/chroma
 docker run -p 8000:8000 chromadb/chroma
 ```
 

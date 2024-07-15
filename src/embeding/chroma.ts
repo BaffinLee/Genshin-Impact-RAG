@@ -32,3 +32,13 @@ export async function embedText(texts: string[]): Promise<number[][]> {
         throw err;
     }
 }
+
+export async function getContexts(question: string) {
+    const embeddings = await embedText([question]);
+    const collection = await getCollection();
+    const res = await collection.query({
+        queryEmbeddings: embeddings,
+        nResults: 2,
+    });
+    return res.documents[0];
+}

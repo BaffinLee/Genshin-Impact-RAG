@@ -1,5 +1,6 @@
+// local server: http://localhost:8787
+
 export default {
-	// local server: http://localhost:8787
 	async fetch(request: Request, env: Env) {
 		const url = new URL(request.url);
 		switch (url.pathname) {
@@ -22,5 +23,19 @@ async function handleEmbeding(request: Request, env: Env) {
 }
 
 async function handleChat(request: Request, env: Env) {
-	return Response.json({});
+	const { contexts, question } = await request.json();
+	if (!question) {
+		throw new Error('Need question');
+	}
+
+	const systemPrompt = `When answering the question or responding, use the context provided, if it is provided and relevant.`
+
+	const res = await env.AI.run('@cf/meta/llama-3-8b-instruct', {
+		messages: [
+			...(contexts?.length ? [{ role: 'system', content: contexts.join('\n') }] : []),
+			{ role: 'system', content: systemPrompt },
+			{ role: 'user', content: question },
+		],
+	});
+	return Response.json(res);
 }
