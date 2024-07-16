@@ -7,7 +7,7 @@
     "start:be": "ts-node src/backend/index.ts",
     "start:fe": "cd src/frontend && vite",
     "scrape": "ts-node src/crawler/index.ts",
-    "embeding": "ts-node src/embeding/index.ts",
+    "embedding": "ts-node src/embedding/index.ts",
     "chroma": "docker run -p 8000:8000 chromadb/chroma",
     "cf-login": "cd src/worker && wrangler login",
     "cf-worker": "cd src/worker && wrangler dev"

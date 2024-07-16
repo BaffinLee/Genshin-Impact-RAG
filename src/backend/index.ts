@@ -1,7 +1,7 @@
 import { Hono } from 'hono';
 import { serve } from '@hono/node-server'
 import { cors } from 'hono/cors';
-import { getContexts } from '../embeding/chroma';
+import { getContexts } from '../embedding/chroma';
 import axios from 'axios';
 
 const app = new Hono();

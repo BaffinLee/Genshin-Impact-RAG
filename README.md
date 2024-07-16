@@ -34,22 +34,22 @@ From [Bilibili Games Wiki](https://wiki.biligame.com/ys/%E9%A6%96%E9%A1%B5).
 yarn scrape
 ```
 
-### Embeding
+### Embedding
 
 Embed character's data into [chroma](https://trychroma.com/) vector DB.
 
 ```bash
-# start chroma db servives with docker
+# start chroma db servive with docker
 docker pull chromadb/chroma
 docker run -p 8000:8000 chromadb/chroma
 ```
 
 ```bash
-# run embeding scripts
-yarn embeding
+# run embedding script
+yarn embedding
 ```
 
-### Run Backend API Services
+### Run Backend API Service
 
 ```bash
 yarn start:be

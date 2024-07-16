@@ -22,7 +22,7 @@ export async function getCollection(): Promise<Collection> {
 
 export async function embedText(texts: string[]): Promise<number[][]> {
     try {
-        const res = await axios.post('http://localhost:8787/embeding', {
+        const res = await axios.post('http://localhost:8787/embedding', {
             text: texts,
         });
         return res.data.data;

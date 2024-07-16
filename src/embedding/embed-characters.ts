@@ -24,7 +24,7 @@ async function embedCharacter(character: string, collection: Collection) {
     const index = characterData.indexOf('命之座\n---');
     const text = characterData.slice(0, Math.min(512, index === -1 ? 512 : index));
 
-    const file = path.resolve(__dirname, `../wiki-data/embeding/${character.replace(/\//g, '-')}.json`);
+    const file = path.resolve(__dirname, `../wiki-data/embedding/${character.replace(/\//g, '-')}.json`);
     if (await promisify(exists)(file)) {
         await collection.add({
             ids: [character],
