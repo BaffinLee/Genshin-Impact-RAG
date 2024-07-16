@@ -23,6 +23,7 @@
     "chromadb-default-embed": "^2.13.2",
     "hono": "^4.4.13",
     "less": "^4.2.0",
+    "marked": "^13.0.2",
     "puppeteer": "^22.13.0",
     "ts-node": "^10.9.2",
     "turndown": "^7.2.0",

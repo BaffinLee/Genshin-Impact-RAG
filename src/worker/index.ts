@@ -28,7 +28,7 @@ async function handleChat(request: Request, env: Env) {
 		throw new Error('Need question');
 	}
 
-	const systemPrompt = `When answering the question or responding, use the context provided, only if it is provided and relevant. Context: ${
+	const systemPrompt = `When answering the question or responding, use the context provided if relevant, do not use context if not provided or relevant. Context: ${
 		contexts?.join('\n') || ''
 	}`;
 

@@ -10,7 +10,7 @@ import Github from '../asserts/github.svg?component'
   </footer>
 </template>
 
-<style scoped>
+<style scoped lang="less">
 footer {
   display: flex;
   justify-content: center;

@@ -2,6 +2,8 @@
 
 Retrieval Augmented Generation (RAG) AI with Genshin Impact's characters data.
 
+![screenshot](docs/screenshot.png)
+
 ## Run it locally
 
 ### Install Dependencies

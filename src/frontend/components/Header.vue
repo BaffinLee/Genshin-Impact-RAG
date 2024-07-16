@@ -4,27 +4,39 @@ import Write from '../asserts/write.svg?component'
 import Flight from '../asserts/flight.svg?component'
 import Bulb from '../asserts/bulb.svg?component'
 import Academic from '../asserts/academic.svg?component'
+import { ref } from 'vue'
+
+const list = ref([
+  {
+    icon: Write,
+    text: '希格雯（Sigewinne）配队推荐',
+  },
+  {
+    icon: Bulb,
+    text: '克洛琳德（Clorinde）外号',
+  },
+  {
+    icon: Flight,
+    text: '「千织屋」的老板，枫丹著名服装设计师',
+  },
+  {
+    icon: Academic,
+    text: '帮我选一个蒸发队打深渊',
+  },
+]);
 </script>
 
 <template>
   <header>
     <img :src="Logo" alt="logo" />
     <ul>
-      <li>
-        <Write />
-        <span>Text inviting friend to wedding</span>
-      </li>
-      <li>
-        <Bulb />
-        <span>Text inviting friend to wedding</span>
-      </li>
-      <li>
-        <Flight />
-        <span>Text inviting friend to wedding</span>
-      </li>
-      <li>
-        <Academic />
-        <span>Text inviting friend to wedding</span>
+      <li
+        v-for="(item, index) in list"
+        :key="index"
+        @click="$emit('select', item.text)"
+      >
+        <component :is="item.icon" />
+        <span>{{ item.text }}</span>
       </li>
     </ul>
   </header>
@@ -36,7 +48,7 @@ header {
   flex-direction: column;
   align-items: center;
   padding-top: 200px;
-  margin-bottom: calc(100vh - 600px);
+  margin-bottom: calc(100vh - 630px);
 }
 
 img {
@@ -63,6 +75,9 @@ li {
   color: rgba(103,103,103, 1);
   user-select: none;
   transition: all 0.2s ease;
+  font-size: 15px;
+  line-height: 22px;
+  flex: 1 1 0;
 
   &:last-child {
     margin-right: 0;
