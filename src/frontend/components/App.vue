@@ -16,7 +16,7 @@ function handleEnter(value: string) {
     type: 'user',
     content: value,
   })
-  axios.post('/chat/api/chat', {
+  axios.post('/api/chat', {
     question: value,
     useContext: useContext.value,
   }).then((res) => {
