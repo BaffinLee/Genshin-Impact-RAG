@@ -25,6 +25,9 @@ function handleEnter(value: string) {
       type: 'system',
       content: parse(res.data.response) as string,
     })
+  }).catch(err => {
+    console.error(err)
+    alert('Request backend API failed! Please make sure backend API is running.')
   })
 }
 </script>
